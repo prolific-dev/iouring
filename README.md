@@ -1,6 +1,14 @@
 # iouring
 
-This project leverages the Linux `io_uring` interface to provide high-performance asynchronous I/O operations. It is designed for scenarios requiring efficient data transfer and low-latency networking, such as NAT (Network Address Translation) and other network-related tasks.
+This project leverages the Linux `io_uring` interface to provide high-performance asynchronous I/O operations. It was developed as part of my thesis to evaluate the performance of the `io_uring` interface compared to traditional I/O mechanisms like standard I/O and `liburing`. The project focuses on scenarios requiring efficient data transfer and low-latency networking, such as NAT (Network Address Translation) and other network-related tasks.
+
+The implementation includes multiple modes of operation, such as:
+- **Standard I/O**: Using traditional blocking and non-blocking I/O mechanisms.
+- **io_uring**: A low-level interface for asynchronous I/O operations.
+- **liburing**: A higher-level library built on top of `io_uring` for easier integration.
+- **Parallel Modes**: Advanced configurations for parallel processing using `liburing`.
+
+The project also includes benchmarking tools to measure the performance of these mechanisms under various configurations, such as queue depth, buffer size, and CPU affinity. These benchmarks help analyze the trade-offs between latency, throughput, and resource utilization.
 
 ## Getting Started
 
