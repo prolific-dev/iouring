@@ -1,17 +1,17 @@
-# IO_URING
+# iouring
 
-This is a brief description of what the project does and its main functionality.
+This project leverages the Linux `io_uring` interface to provide high-performance asynchronous I/O operations. It is designed for scenarios requiring efficient data transfer and low-latency networking, such as NAT (Network Address Translation) and other network-related tasks.
 
 ## Getting Started
 
-These instructions will guide you on how to get an executable of the project up and running on your local machine for development and testing purposes.
+These instructions will guide you on how to build and run the project on your local machine for development and testing purposes.
 
-Build binary
+### Build Binary
 ```bash
 make clean all
 ```
 
-Cleanup
+### Cleanup
 ```bash
 make clean
 ```
@@ -38,31 +38,35 @@ Optional:
         -h                          Print Help.
         -?                          Print Help.
 
-If configuration file is in use, other parameters won`t be allowed.
-
-
-Default:
-       name            = nat1
-       address/netmask = 1.1.1.1/32
-       route           = 17.0.0.1/24>18.0.0.1/24
-
-Examples:
-    Run with configuration file
-       ./main -c /tmp/nat.conf
-
-    Run with input parameters
-       ./main -i nat1 -a 1.1.1.1/32 -r 17.0.0.1/24>18.0.0.1/24
-
-    Run in multiprocess mode (creates 2 processes, each handle one direction)
-       ./main -p nat1,1.1.1.1/32:nat2,2.2.2.2/32 -r 17.0.0.1/24>18.0.0.1/24
-
+If a configuration file is in use, other parameters won’t be allowed.
 ```
 
+### Default Configuration:
+- **Name**: `nat1`
+- **Address/Netmask**: `1.1.1.1/32`
+- **Route**: `17.0.0.1/24 > 18.0.0.1/24`
 
-### Configuration File
+### Examples:
+1. **Run with a configuration file**:
+   ```bash
+   ./main -c /tmp/nat.conf
+   ```
 
-Serving parameters over config file.
+2. **Run with input parameters**:
+   ```bash
+   ./main -i nat1 -a 1.1.1.1/32 -r 17.0.0.1/24>18.0.0.1/24
+   ```
 
+3. **Run in multiprocess mode**:
+   ```bash
+   ./main -p nat1,1.1.1.1/32:nat2,2.2.2.2/32 -r 17.0.0.1/24>18.0.0.1/24
+   ```
+
+## Configuration File
+
+You can serve parameters through a configuration file for easier management.
+
+### Example Configuration File:
 ```bash
 vm-2:/home/user/build/iouring: cat nat.conf
 
@@ -87,12 +91,14 @@ loglevel=INFO
 logfile=/home/user/build/iouring/nat.log
 ```
 
-
 ## License
 
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ## Authors
 
 Dennis Agostinho da Silva
 
 ## Acknowledgments
+
+Special thanks to the open-source community for their support and inspiration.
